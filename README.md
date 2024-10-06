@@ -1,7 +1,7 @@
 <div class="markdown prose w-full break-words dark:prose-invert dark">
     <h1>React Div Charts</h1>
-    <p>Welcome to 
-        <strong>React Div Charts</strong>—a lightweight and fully editable charting library designed for developers who prefer simplicity and flexibility in visualizing data. Unlike many traditional libraries that rely on complex D3.js integrations, React Div Charts is built entirely with standard HTML 
+    <p>Welcome to
+        <strong>React Div Charts</strong>—a lightweight and fully editable charting library designed for developers who prefer simplicity and flexibility in visualizing data. Unlike many traditional libraries that rely on complex D3.js integrations, React Div Charts is built entirely with standard HTML
         <code>&lt;div&gt;</code> elements, making it intuitive and easy to customize.
     </p>
     <p>Whether you’re creating bar charts, line charts, doughnut charts, or multi-type visualizations, our library empowers you to craft beautiful and responsive charts without the overhead of heavy dependencies. While it excels in delivering clear insights from smaller datasets, React Div Charts prioritizes interactivity and editability, allowing users to modify and manipulate chart elements seamlessly.</p>
@@ -11,8 +11,6 @@
 Install it by running `npm install react-div-charts --save` or `yarn add react-div-charts`. Then to use it:
 
 ```jsx
-import LineChart from 'react-div-charts/line-chart';
-//or
 import { LineChart } from 'react-div-charts';
 ```
 
@@ -23,7 +21,7 @@ import { LineChart } from 'react-div-charts';
   <summary>Show Line Chart code</summary>
 
   ### Line Chart
-  
+
 ```jsx
 <LineChart
     width={400}
@@ -50,7 +48,7 @@ import { LineChart } from 'react-div-charts';
   <summary>Show Bar Chart code</summary>
 
   ### Bar Chart
-  
+
 ```jsx
 <BarChart
     width={400}
@@ -76,7 +74,7 @@ import { LineChart } from 'react-div-charts';
   <summary>Show Multi Chart code</summary>
 
   ### Multi Chart
-  
+
 ```jsx
 <MultiChart
     width={400}
@@ -105,7 +103,7 @@ import { LineChart } from 'react-div-charts';
   <summary>Show Half Angle Radial Chart code</summary>
 
   ### Half Angle Radial Chart
-  
+
 ```jsx
 <HalfAngleRadialChart
     width={400}
@@ -120,7 +118,7 @@ import { LineChart } from 'react-div-charts';
   <summary>Show Pie Chart code</summary>
 
   ### Pie Chart
-  
+
 ```jsx
 <PieChart
     data={[
@@ -139,7 +137,7 @@ import { LineChart } from 'react-div-charts';
   <summary>Show Doughnut Chart code</summary>
 
   ### Doughnut Chart
-  
+
 ```jsx
 <div style={{
         backgroundColor: 'white',
@@ -165,19 +163,19 @@ import { LineChart } from 'react-div-charts';
 		<p>Represents a single cell's data used in various chart types.</p>
 		<ul>
 			<li>
-				<strong>label</strong>: 
+				<strong>label</strong>:
 				<code>string</code> - The label for the cell.
 			</li>
 			<li>
-				<strong>color</strong>: 
+				<strong>color</strong>:
 				<code>string</code> - The color representing the cell.
 			</li>
 			<li>
-				<strong>value</strong>: 
+				<strong>value</strong>:
 				<code>number</code> - The numerical value of the cell.
 			</li>
 			<li>
-				<strong>chartType</strong>: 
+				<strong>chartType</strong>:
 				<code>'bar' | 'line'</code>
 				<em>(optional)</em> - Specifies the chart type, either bar or line.
 			</li>
@@ -201,15 +199,15 @@ import { LineChart } from 'react-div-charts';
 					<p>Represents a single data point in a pie or doughnut chart.</p>
 					<ul>
 						<li>
-							<strong>value</strong>: 
+							<strong>value</strong>:
 							<code>number</code> - The value of the data point.
 						</li>
 						<li>
-							<strong>label</strong>: 
+							<strong>label</strong>:
 							<code>string</code> - The label of the data point.
 						</li>
 						<li>
-							<strong>color</strong>: 
+							<strong>color</strong>:
 							<code>string</code> - The color of the data point.
 						</li>
 					</ul>
@@ -220,20 +218,20 @@ import { LineChart } from 'react-div-charts';
 						<p>Represents a dataset for a chart with multiple values.</p>
 						<ul>
 							<li>
-								<strong>label</strong>: 
+								<strong>label</strong>:
 								<code>string</code>
 								<em>(optional)</em> - The label for the dataset.
 							</li>
 							<li>
-								<strong>value</strong>: 
+								<strong>value</strong>:
 								<code>number[]</code> - Array of values for the dataset.
 							</li>
 							<li>
-								<strong>color</strong>: 
+								<strong>color</strong>:
 								<code>string</code> - The color representing the dataset.
 							</li>
 							<li>
-								<strong>chartType</strong>: 
+								<strong>chartType</strong>:
 								<code>'bar' | 'line'</code>
 								<em>(optional)</em> - Specifies whether the dataset is for a bar or line chart.
 							</li>
