@@ -45,7 +45,7 @@ import { LineChart } from 'react-div-charts';
 </details>
 
 ### Bar Chart.
-![Image of BarChart Component for a simple data visualization](https://github.com/user-attachments/assets/9f2d1ac9-70f3-480c-ae41-95355e6b2be3 "Bar Chart")
+![Image of BarChart Component for a simple data visualization](https://github.com/omerrkosar/react-div-charts/blob/main/public/bar-chart.png "Bar Chart")
 <details>
   <summary>Show Bar Chart code</summary>
 
