@@ -18,7 +18,7 @@ import { LineChart } from 'react-div-charts';
 
 ## Examples
 ### Line Chart.
-![Image of LineChart Component for a simple data visualization](https://github.com/user-attachments/assets/45b37381-04b4-40d6-b5c4-d6e48e946b50 "Line Chart")
+![Image of LineChart Component for a simple data visualization](https://github.com/omerrkosar/react-div-charts/blob/main/public/line-chart.png "Line Chart")
 <details>
   <summary>Show Line Chart code</summary>
 
@@ -71,7 +71,7 @@ import { LineChart } from 'react-div-charts';
 </details>
 
 ### Multi Chart.
-![Image of MultiChart Component for a simple data visualization](https://github.com/user-attachments/assets/83869b40-1951-4487-8a8a-3365b5bd7c42 "Multi Chart")
+![Image of MultiChart Component for a simple data visualization](https://github.com/omerrkosar/react-div-charts/blob/main/public/multi-chart.png "Multi Chart")
 <details>
   <summary>Show Multi Chart code</summary>
 
@@ -100,7 +100,7 @@ import { LineChart } from 'react-div-charts';
 </details>
 
 ### Half Angle Radial Chart.
-![Image of HalfAngleRadialChart Component for a simple data visualization](https://github.com/user-attachments/assets/175a3ed5-dcc9-4a48-8aec-3afda8c6f3ae "Half Angle Radial Chart")
+![Image of HalfAngleRadialChart Component for a simple data visualization](https://github.com/omerrkosar/react-div-charts/blob/main/public/half-angle-radial-chart.png "Half Angle Radial Chart")
 <details>
   <summary>Show Half Angle Radial Chart code</summary>
 
@@ -115,7 +115,7 @@ import { LineChart } from 'react-div-charts';
 </details>
 
 ### Pie Chart.
-![Image of PieChart Component for a simple data visualization](https://github.com/user-attachments/assets/047ca067-9d8a-463a-b16f-21d734386da8 "Pie Chart")
+![Image of PieChart Component for a simple data visualization](https://github.com/omerrkosar/react-div-charts/blob/main/public/pie-chart.png "Pie Chart")
 <details>
   <summary>Show Pie Chart code</summary>
 
@@ -134,7 +134,7 @@ import { LineChart } from 'react-div-charts';
 </details>
 
 ### Doughnut Chart.
-![Image of DoughnutChart Component for a simple data visualization](https://github.com/user-attachments/assets/3ecb6e1a-cfdd-408d-8c49-24ff6d8e4ea5 "Doughnut Chart")
+![Image of DoughnutChart Component for a simple data visualization](https://github.com/omerrkosar/react-div-charts/blob/main/public/doughnut-chart.png "Doughnut Chart")
 <details>
   <summary>Show Doughnut Chart code</summary>
 
