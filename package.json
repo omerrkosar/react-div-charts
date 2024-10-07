@@ -1,12 +1,18 @@
 {
   "name": "react-div-charts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Made with divs",
   "author": "omerrkosar",
   "license": "MIT",
   "repository": "omerrkosar/react-div-charts",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
+  "keywords": [
+    "div",
+    "chart",
+    "editable",
+    "react"
+  ],
   "source": "src/index.tsx",
   "engines": {
     "node": ">=10"
@@ -24,7 +30,7 @@
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": "^16.8.2 || ^17.0 || ^18.x"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
