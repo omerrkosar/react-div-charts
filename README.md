@@ -184,7 +184,6 @@ import { LineChart } from 'react-div-charts';
 				</ul>
 			</li>
 		</ul>
-		<hr>
 		</div>
 
 <div class="markdown prose w-full break-words dark:prose-invert dark">
