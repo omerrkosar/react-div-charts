@@ -38,13 +38,24 @@ const LineChart: React.FC<LineChartProps> = ({
   renderLabel=defaultRenderLabel,
   renderLabels,
   renderLineValue=defaultRenderLineValue,
+  renderLineContainer,
   renderLine,
   renderPoint,
 }) => {
 
   const randomColor = useMemo(()=> getRandomColor(),[])
 
-  const defaultRenderLine = (cellData:CellData,chartMaxValue:number,cellWidth:number,nextCellData:CellData) => {
+  const defaultRenderLine = (cellData:CellData) => {
+    return (
+      <div
+        style={{
+          borderBottom: '1px solid black',
+          borderColor: cellData.color ?? randomColor,
+        }}/>
+    )
+  }
+
+  const defaultRenderLineContainer = (cellData:CellData,chartMaxValue:number,cellWidth:number,nextCellData:CellData) => {
     if(!nextCellData) return <React.Fragment></React.Fragment>
     const dx = cellWidth
     const pointHeight = (cellData.value / chartMaxValue) * (height - 30)
@@ -60,14 +71,15 @@ const LineChart: React.FC<LineChartProps> = ({
           position: 'absolute',
           transition: 'all 1s ease-in-out',
           left: '0px',
-          borderBottom: '1px solid black',
           width: `${lineLength}px`,
           bottom: pointHeight,
-          borderColor: cellData.color ?? randomColor,
           transform: `rotate(${360-angle}deg)`,
           transformOrigin: angle > 0 ? 'bottom left' : 'top left' ,
         }}
-      />
+      >
+        {renderLine ? renderLine(cellData) : defaultRenderLine(cellData)}
+
+      </div>
     )
   }
 
@@ -159,9 +171,7 @@ const LineChart: React.FC<LineChartProps> = ({
       }}>
         {data.map((d, dataIndex) => (
           <React.Fragment key={dataIndex} >
-
-
-            <React.Fragment>{renderLine ? renderLine(d,chartMaxValue,cellWidth,nextData[dataIndex]) : defaultRenderLine(d,chartMaxValue,cellWidth,nextData[dataIndex])}</React.Fragment>
+            <React.Fragment>{renderLineContainer ? renderLineContainer(d,chartMaxValue,cellWidth,nextData[dataIndex]) : defaultRenderLineContainer(d,chartMaxValue,cellWidth,nextData[dataIndex])}</React.Fragment>
             <React.Fragment>{renderPointContainer(nextData[dataIndex],chartMaxValue) }</React.Fragment>
             <React.Fragment>{renderValueContainer(nextData[dataIndex],chartMaxValue)}</React.Fragment>
             {cellIndex === 0 ? (

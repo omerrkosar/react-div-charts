@@ -18,6 +18,7 @@ const BarChart: React.FC<BarChartProps> = ({
   renderLabel,
   renderLabels,
   renderBarValue,
+  renderBarContainer,
   renderBar,
 }) => {
 
@@ -30,19 +31,29 @@ const BarChart: React.FC<BarChartProps> = ({
       left: 'calc(50% - 8px)',
     }}>{value}</div>
   }
-  const defaultRenderBar = (cellData:CellData,chartMaxValue:number,cellWidth:number) => {
+  const defaultRenderBarContainer = (cellData:CellData,chartMaxValue:number,cellWidth:number) => {
     return (
       <div
         style={{
           display: 'block',
-          borderTopLeftRadius: '10px',
-          borderTopRightRadius: '10px',
           transition: 'all 1s ease-in-out',
-          width: cellWidth * 0.6 / data.length,
           height: (cellData.value / chartMaxValue) * (height - 30),
-          backgroundColor: cellData.color ?? randomColor,
         }}
-      />
+      >
+        {renderBar ? renderBar(cellData,cellWidth) : defaultRenderBar(cellData,cellWidth)}
+      </div>
+    )
+  }
+
+  const defaultRenderBar = (cellData:CellData,cellWidth:number) => {
+    return (
+      <div style={{
+        borderTopLeftRadius: '10px',
+        borderTopRightRadius: '10px',
+        backgroundColor: cellData.color ?? randomColor,
+        width: cellWidth * 0.6 / data.length,
+        height: '100%',
+      }} />
     )
   }
 
@@ -74,7 +85,7 @@ const BarChart: React.FC<BarChartProps> = ({
                 {hideBarValue ? null : (
                   <React.Fragment>{ renderBarValue ? renderBarValue(d.value) : defaultRenderBarValue(d.value) }</React.Fragment>
                 )}
-                {renderBar ? renderBar(d,chartMaxValue,cellWidth) : defaultRenderBar(d,chartMaxValue,cellWidth)}
+                {renderBarContainer ? renderBarContainer(d,chartMaxValue,cellWidth) : defaultRenderBarContainer(d,chartMaxValue,cellWidth)}
               </div>
 
             </React.Fragment>

@@ -25,8 +25,10 @@ const MultiChart: React.FC<MultiChartProps> = ({
   renderLabel,
   renderLabels,
   renderBarValue,
+  renderBarContainer,
   renderBar,
   renderLineValue=defaultRenderLineValue,
+  renderLineContainer,
   renderLine,
   renderPoint,
 }) => {
@@ -40,20 +42,29 @@ const MultiChart: React.FC<MultiChartProps> = ({
       left: 'calc(50% - 8px)',
     }}>{value}</div>
   }
-  const defaultRenderBar = (cellData:CellData,chartMaxValue:number,cellWidth:number) => {
+  const defaultRenderBarContainer = (cellData:CellData,chartMaxValue:number,cellWidth:number) => {
     return (
       <div
-
         style={{
           display: 'block',
-          borderTopLeftRadius: '10px',
-          borderTopRightRadius: '10px',
           transition: 'all 1s ease-in-out',
-          width: cellWidth * 0.6 / data.length,
           height: (cellData.value / chartMaxValue) * (height - 30),
-          backgroundColor: cellData.color ?? randomColor,
         }}
-      />
+      >
+        {renderBar ? renderBar(cellData,cellWidth) : defaultRenderBar(cellData,cellWidth)}
+      </div>
+    )
+  }
+
+  const defaultRenderBar = (cellData:CellData,cellWidth:number) => {
+    return (
+      <div style={{
+        borderTopLeftRadius: '10px',
+        borderTopRightRadius: '10px',
+        backgroundColor: cellData.color ?? randomColor,
+        width: cellWidth * 0.6 / data.length,
+        height: '100%',
+      }} />
     )
   }
 
@@ -106,7 +117,7 @@ const MultiChart: React.FC<MultiChartProps> = ({
     )
   }
 
-  const defaultRenderLine = (cellData:CellData,chartMaxValue:number,cellWidth:number,nextCellData:CellData) => {
+  const defaultRenderLineContainer = (cellData:CellData,chartMaxValue:number,cellWidth:number,nextCellData:CellData) => {
     if(!nextCellData) return <React.Fragment></React.Fragment>
     const dx = cellWidth
     const pointHeight = (cellData.value / chartMaxValue) * (height - 30)
@@ -122,15 +133,25 @@ const MultiChart: React.FC<MultiChartProps> = ({
           position: 'absolute',
           transition: 'all 1s ease-in-out',
           zIndex: 1,
-          borderBottom: '1px solid black',
           width: `${lineLength}px`,
           left:cellWidth / 2,
           bottom: pointHeight,
-          borderColor: cellData.color ?? randomColor,
           transform: `rotate(${360-angle}deg)`,
           transformOrigin: angle > 0 ? 'bottom left' : 'top left' ,
         }}
-      />
+      >
+        {renderLine ? renderLine(cellData) : defaultRenderLine(cellData)}
+      </div>
+    )
+  }
+
+  const defaultRenderLine = (cellData:CellData) => {
+    return (
+      <div
+        style={{
+          borderBottom: '1px solid black',
+          borderColor: cellData.color ?? randomColor,
+        }}/>
     )
   }
 
@@ -144,10 +165,8 @@ const MultiChart: React.FC<MultiChartProps> = ({
       }}>
         {data.filter(d=>d.chartType==='line').map((d, index) => (
           <React.Fragment key={index} >
-
-
             {nextData ? (
-              <React.Fragment>{renderLine ? renderLine(d,chartMaxValue,cellWidth,nextData[index]) : defaultRenderLine(d,chartMaxValue,cellWidth,nextData[index])}</React.Fragment>
+              <React.Fragment>{renderLineContainer ? renderLineContainer(d,chartMaxValue,cellWidth,nextData[index]) : defaultRenderLineContainer(d,chartMaxValue,cellWidth,nextData[index])}</React.Fragment>
             ) :null}
 
             <React.Fragment>{renderPointContainer(d,chartMaxValue,cellWidth) }</React.Fragment>
@@ -179,7 +198,7 @@ const MultiChart: React.FC<MultiChartProps> = ({
                   {hideBarValue ? null : (
                     <React.Fragment>{ renderBarValue ? renderBarValue(d.value) : defaultRenderBarValue(d.value) }</React.Fragment>
                   )}
-                  {renderBar ? renderBar(d,chartMaxValue,cellWidth) : defaultRenderBar(d,chartMaxValue,cellWidth)}
+                  {renderBarContainer ? renderBarContainer(d,chartMaxValue,cellWidth) : defaultRenderBarContainer(d,chartMaxValue,cellWidth)}
                 </div>
 
               </React.Fragment>
